@@ -9,7 +9,7 @@ public class DayHeaderView: UIView {
 
   var style = DayHeaderStyle()
 
-  weak var state: DayViewState? {
+  public weak var state: DayViewState? {
     willSet(newValue) {
       state?.unsubscribe(client: self)
     }
@@ -79,7 +79,11 @@ public class DayHeaderView: UIView {
     }
     backgroundColor = style.backgroundColor
   }
-
+  
+  public func removeSwipeLabelView() {
+    swipeLabelView.removeFromSuperview()
+  }
+  
   override public func layoutSubviews() {
     super.layoutSubviews()
     pagingScrollView.contentOffset = CGPoint(x: bounds.width, y: 0)
